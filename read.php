@@ -60,7 +60,9 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 <body>
     <div class="wrapper">
         <header>
-            <div class="logo" id="logo-placeholder"></div> <!-- Espaço para o logo -->
+            <div class="logo" id="logo-placeholder">
+            <img src="logo.jpg" height="50px" alt="logo">
+            </div>
             <h1>Insumos Agrícolas</h1>
         </header>
 
