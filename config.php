@@ -1,9 +1,9 @@
 <?php
 /* Credenciais do banco de dados. Supondo que você esteja executando o MySQL
    com a configuração padrão (usuário 'root' sem senha) */
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
+define('DB_SERVER', 'db.multipass');
+define('DB_USERNAME', 'phpcrud');
+define('DB_PASSWORD', '123456');
 define('DB_NAME', 'insumos_agricolas');
 
 /* Tentativa de conexão ao banco de dados MySQL */
