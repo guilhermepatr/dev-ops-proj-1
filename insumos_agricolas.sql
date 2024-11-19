@@ -1,10 +1,3 @@
--- Cria o banco de dados
-CREATE DATABASE insumos_agricolas;
-
--- Usa o banco de dados criado
-USE insumos_agricolas;
-
--- Cria a tabela insumos
 CREATE TABLE insumos (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
