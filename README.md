@@ -15,9 +15,9 @@ Este é um sistema de gerenciamento de insumos agrícolas que permite o CRUD (Cr
 
 Para rodar esta aplicação, você precisará de:
 
-- PHP 7.0 ou superior
+- PHP 8.3 ou superior
 - MySQL
-- Servidor Web (como Apache ou Nginx)
+- Servidor Web Apache ou Nginx
 
 ## Instalação
 
@@ -27,6 +27,9 @@ Para rodar esta aplicação, você precisará de:
 4. Edite o arquivo `config.php` para ajustar as credenciais do banco de dados conforme necessário.
 5. Coloque os arquivos da aplicação na raiz do seu servidor web.
 6. Acesse a aplicação pelo seu navegador em `http://localhost/nome_do_seu_projeto/index.php`.
+
+## Neste link você vai tera acesso ao arquivo docs com os codigos que seão utilizado:
+https://docs.google.com/document/d/175FxNKoUloYdA-6bemie6KJVSxcNPH6FzOfKWT1MjxA/edit?usp=sharing
 
 ## Estrutura do Banco de Dados
 
@@ -40,3 +43,5 @@ CREATE TABLE insumos (
     quantidade INT NOT NULL,
     valor DECIMAL(10, 2) NOT NULL
 );
+
+
