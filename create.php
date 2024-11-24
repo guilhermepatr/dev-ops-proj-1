@@ -1,79 +1,53 @@
-<?php
-// Inclui o arquivo de configuração
+o<?php
 require_once "config.php";
 
-// Define variáveis e inicializa com valores vazios
 $nome_produto = $tipo_material = $quantidade = $valor = "";
 $nome_produto_err = $tipo_material_err = $quantidade_err = $valor_err = "";
 
-// Processa os dados do formulário quando o formulário é submetido
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Valida o nome do produto
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_nome_produto = trim($_POST["nome_produto"]);
-    if(empty($input_nome_produto)){
+    if (empty($input_nome_produto)) {
         $nome_produto_err = "Por favor, insira o nome do produto.";
     } else {
         $nome_produto = $input_nome_produto;
     }
-    
-    // Valida o tipo do material
+
     $input_tipo_material = trim($_POST["tipo_material"]);
-    if(empty($input_tipo_material)){
-        $tipo_material_err = "Por favor, selecione o tipo do material.";     
+    if (empty($input_tipo_material)) {
+        $tipo_material_err = "Por favor, selecione o tipo do material.";
     } else {
         $tipo_material = $input_tipo_material;
     }
-    
-    // Valida a quantidade
+
     $input_quantidade = trim($_POST["quantidade"]);
-    if(empty($input_quantidade)){
-        $quantidade_err = "Por favor, insira a quantidade.";     
-    } elseif(!ctype_digit($input_quantidade)){
+    if (empty($input_quantidade) || !ctype_digit($input_quantidade)) {
         $quantidade_err = "Por favor, insira um valor inteiro positivo.";
     } else {
         $quantidade = $input_quantidade;
     }
-    
-    // Valida o valor
+
     $input_valor = trim($_POST["valor"]);
-    if(empty($input_valor)){
-        $valor_err = "Por favor, insira o valor do produto.";     
-    } elseif(!is_numeric($input_valor)){
+    if (empty($input_valor) || !filter_var($input_valor, FILTER_VALIDATE_FLOAT)) {
         $valor_err = "Por favor, insira um valor numérico.";
     } else {
         $valor = $input_valor;
     }
-    
-    // Verifica erros de entrada antes de inserir no banco de dados
-    if(empty($nome_produto_err) && empty($tipo_material_err) && empty($quantidade_err) && empty($valor_err)){
-        // Prepara uma declaração de inserção
-        $sql = "INSERT INTO insumos (nome_produto, tipo_material, quantidade, valor) VALUES (?, ?, ?, ?)";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Vincula as variáveis à declaração preparada como parâmetros
-            mysqli_stmt_bind_param($stmt, "ssii", $param_nome_produto, $param_tipo_material, $param_quantidade, $param_valor);
-            
-            // Define os parâmetros
-            $param_nome_produto = $nome_produto;
-            $param_tipo_material = $tipo_material;
-            $param_quantidade = $quantidade;
-            $param_valor = $valor;
-            
-            // Tenta executar a declaração preparada
-            if(mysqli_stmt_execute($stmt)){
-                // Registro criado com sucesso. Redireciona para a página inicial
+
+    if (empty($nome_produto_err) && empty($tipo_material_err) && empty($quantidade_err) && empty($valor_err)) {
+        $sql = "INSERT INTO insumos (nome, tipo, quantidade, valor) VALUES (?, ?, ?, ?)";
+
+        if ($stmt = mysqli_prepare($link, $sql)) {
+            mysqli_stmt_bind_param($stmt, "ssdi", $nome_produto, $tipo_material, $quantidade, $valor);
+
+            if (mysqli_stmt_execute($stmt)) {
                 header("location: index.php");
                 exit();
-            } else{
-                echo "Algo deu errado. Por favor, tente novamente mais tarde.";
+            } else {
+                echo "Erro ao inserir os dados: " . mysqli_error($link);
             }
         }
-         
-        // Fecha a declaração
         mysqli_stmt_close($stmt);
     }
-    
-    // Fecha a conexão
     mysqli_close($link);
 }
 ?>
