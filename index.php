@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,7 +18,7 @@
             </div>
             <h1>Insumos Agrícolas</h1>
         </header>
-        
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -60,7 +61,7 @@ if($result = mysqli_query($link, $sql)){
                     echo "</td>";
                 echo "</tr>";
             }
-            echo "</tbody>";                            
+            echo "</tbody>";
         echo "</table>";
         mysqli_free_result($result);
     } else{
@@ -73,14 +74,17 @@ if($result = mysqli_query($link, $sql)){
 mysqli_close($link);
 ?>
 
-
-
-
-
-
                 </div>
             </div>        
         </div>
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
