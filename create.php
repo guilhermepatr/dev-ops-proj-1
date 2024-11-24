@@ -1,4 +1,5 @@
-o<?php
+                                                                                                                                                                                                                                                                                                    create.php *                                                                                                                                                                                                                                                                                                                    
+<?php
 require_once "config.php";
 
 $nome_produto = $tipo_material = $quantidade = $valor = "";
@@ -109,3 +110,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
