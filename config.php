@@ -1,6 +1,6 @@
 <?php
 // Configuração do banco de dados
-define('DB_SERVER', 'db.multipass'); // Substitua 'localhost' pelo seu host, como 'db.multipass' se estiver correto
+define('DB_SERVER', 'db.insumos.com'); // Substitua 'localhost' pelo seu host, como 'db.multipass' se estiver correto
 define('DB_USERNAME', 'phpcrud'); // Nome do usuário do banco
 define('DB_PASSWORD', '123456'); // Senha do banco
 define('DB_NAME', 'insumos_agricolas'); // Nome do banco de dados
@@ -21,4 +21,3 @@ if (!mysqli_set_charset($link, "utf8")) {
     die("ERRO: Não foi possível configurar o charset UTF-8. Detalhes: " . mysqli_error($link));
 }
 ?>
-
